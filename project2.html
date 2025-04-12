@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background Color Changer</title>
+  <style>
+    /* Style to center the button in the middle of the page */
+    body {
+      height: 100vh; /* Full height of the viewport */
+      display: flex; /* Enable flexbox */
+      justify-content: center; /* Center horizontally */
+      align-items: center; /* Center vertically */
+      margin: 0; /* Remove default margin */
+      background-color: #f4f4f4; /* Light background color */
+    }
+
+    button {
+      padding: 15px 30px; /* Increase button size */
+      font-size: 18px; /* Larger text */
+      font-weight: bold; /* Make text bold */
+      cursor: pointer; /* Change cursor to pointer on hover */
+      border: none; /* Remove border */
+      background-color: #3498db; /* Button color */
+      color: white; /* Button text color */
+      border-radius: 8px; /* Rounded corners */
+      transition: background-color 0.3s ease; /* Smooth background change */
+    }
+
+    button:hover {
+      background-color: #2980b9; /* Darker button color on hover */
+    }
+  </style>
+</head>
+<body>
+
+  <button onclick="changeBackgroundColor()">Click me to change background color</button>
+
+  <script>
+    function changeBackgroundColor() {
+      // Array of colors to choose from
+      const colors = ['#FF5733', '#33FF57', '#3357FF', '#F1C40F', '#9B59B6', '#1ABC9C'];
+      
+      // Get a random index to pick a color
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      
+      // Change the background color of the body
+      document.body.style.backgroundColor = randomColor;
+    }
+  </script>
+
+</body>
+</html>

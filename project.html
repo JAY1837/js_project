@@ -1,0 +1,104 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Image Slider</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #222;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .slider {
+      position: relative;
+      width: 80%;
+      max-width: 800px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
+
+    .slides img {
+      width: 100%;
+      flex-shrink: 0;
+      border-radius: 10px;
+    }
+
+    .buttons {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 20px;
+    }
+
+    .btn {
+      background-color: rgba(0, 0, 0, 0.5);
+      border: none;
+      color: #fff;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 5px;
+    }
+
+    .btn:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slider">
+    <div class="slides" id="slideContainer">
+      <img src="https://picsum.photos/id/1015/800/400" alt="Image 1">
+      <img src="https://picsum.photos/id/1016/800/400" alt="Image 2">
+      <img src="https://picsum.photos/id/1018/800/400" alt="Image 3">
+    </div>
+    <div class="buttons">
+      <button class="btn" onclick="prevSlide()">❮ Prev</button>
+      <button class="btn" onclick="nextSlide()">Next ❯</button>
+    </div>
+  </div>
+
+  <script>
+    const slides = document.getElementById('slideContainer');
+    const totalSlides = slides.children.length;
+    let index = 0;
+
+    function showSlide(i) {
+      if (i >= totalSlides) index = 0;
+      if (i < 0) index = totalSlides - 1;
+      slides.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    function nextSlide() {
+      index++;
+      showSlide(index);
+    }
+
+    function prevSlide() {
+      index--;
+      showSlide(index);
+    }
+  </script>
+
+</body>
+</html>
